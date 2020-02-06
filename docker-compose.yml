@@ -11,7 +11,7 @@ services:
       - UMASK_SET=022 #optional
       - PLEX_CLAIM= #optional
     volumes:
-      - /path/to/library:/config
-      - /path/to/tvseries:/tv
-      - /path/to/movies:/movies
+      - /path/to/library:/media/plex/config
+      - /path/to/tvseries:/media/plex/Tv
+      - /path/to/movies:/media/plex/Movies
     restart: unless-stopped
