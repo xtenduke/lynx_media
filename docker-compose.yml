@@ -15,3 +15,5 @@ services:
       - /media/plex/Tv:/tv
       - /media/plex/Movies:/movies
     restart: unless-stopped
+    ports:
+      - 32400:32400
