@@ -5,13 +5,13 @@ services:
     container_name: plex
     network_mode: host
     environment:
-      - PUID=113
-      - PGID=113
+      - PUID=1000
+      - PGID=1000
       - VERSION=docker
       - UMASK_SET=022 #optional
       - PLEX_CLAIM= #optional
     volumes:
-      - /path/to/library:/media/plex/config
-      - /path/to/tvseries:/media/plex/Tv
-      - /path/to/movies:/media/plex/Movies
+      - /media/plex/config:/config
+      - /media/plex/Tv:/Tv
+      - /media/plex/Movies:/Movies
     restart: unless-stopped
