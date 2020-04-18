@@ -7,7 +7,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - VERSION=docker
+      - VERSION=latest
       - UMASK_SET=022 #optional
       - PLEX_CLAIM= #optional
     volumes:
