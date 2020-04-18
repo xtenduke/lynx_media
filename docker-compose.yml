@@ -31,11 +31,11 @@ services:
       - UMASK_SET=022
       - TZ=Pacific/Auckland
       - OPENVPN_PROVIDER=NORDVPN
-      - OPENVPNCONFIG=al10.nordvpn.com.tcp
+      - OPENVPN_CONFIG=al10.nordvpn.com.tcp
       - LOCAL_NETWORK=192.168.0.0/16
       - DELUGE_LOGLEVEL=error
      devices:
       - dev/net/tun:/dev/net/tun
      cap_add:
       - NET_ADMIN
-     restart: unless-stopped_
+     restart: unless-stopped
