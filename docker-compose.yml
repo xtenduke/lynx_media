@@ -15,17 +15,17 @@ services:
       - /media/plex/Movies:/Movies
     restart: unless-stopped
   deluge-vpn:
-     image: sgtsquiggs/deluge-openvpn
-     container_name: "deluge-vpn"
-     env_file:
+    image: sgtsquiggs/deluge-openvpn
+    container_name: "deluge-vpn"
+    env_file:
       - .vpn
-     volumes:
+    volumes:
       - /media/deluge/config:/config
       - /media:/downloads
       - /etc/localtime:/etc/localtime:ro
-     ports:
+    ports:
       - "8112:8112"
-     environment:
+    environment:
       - PUID=1000
       - PGID=1000
       - UMASK_SET=022
@@ -34,8 +34,9 @@ services:
       - OPENVPN_CONFIG=al10.nordvpn.com.tcp
       - LOCAL_NETWORK=192.168.0.0/16
       - DELUGE_LOGLEVEL=error
-     devices:
+    devices:
       - dev/net/tun:/dev/net/tun
-     cap_add:
+    cap_add:
       - NET_ADMIN
-     restart: unless-stopped
+    restart: unless-stopped
+
