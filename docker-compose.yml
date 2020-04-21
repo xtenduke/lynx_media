@@ -21,7 +21,7 @@ services:
       - .vpn
     volumes:
       - /media/deluge/config:/config
-      - /media:/downloads
+      - /media/plex:/downloads
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "8112:8112"
@@ -31,12 +31,40 @@ services:
       - UMASK_SET=022
       - TZ=Pacific/Auckland
       - OPENVPN_PROVIDER=NORDVPN
-      - OPENVPN_CONFIG=al10.nordvpn.com.tcp
+      - OPENVPN_CONFIG=nz33.nordvpn.com.tcp
       - LOCAL_NETWORK=192.168.0.0/16
       - DELUGE_LOGLEVEL=error
     devices:
       - dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
+    restart: unless-stopped
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Pacific/Auckland
+    volumes:
+      - /media/jackett/config:/config
+      - /media/plex:/downloads
+    ports: 
+      - "9117:9117"
+    restart: unless-stopped
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Pacific/Auckland
+      - UMASK_SET=022
+    volumes:
+      - /media/sonarr/config:/config
+      - /media/plex/Tv:/tv
+      - /media/plex:/downloads
+    ports:
+      - "8989:8989"
     restart: unless-stopped
 
