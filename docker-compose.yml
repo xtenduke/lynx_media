@@ -67,4 +67,30 @@ services:
     ports:
       - "8989:8989"
     restart: unless-stopped
-
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Pacific/Auckland
+      - UMASK_SET=022
+    volumes:
+      - /media/radarr/config:/config
+      - /media/plex/Tv:/tv
+      - /media/plex:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+  ombi:
+    image: linuxserver/ombi
+    container_name: ombi
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Pacific/Auckland
+    volumes:
+      - /media/ombi/config:/config
+    ports:
+      - 3579:3579
+    restart: unless-stopped
