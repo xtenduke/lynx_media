@@ -77,7 +77,7 @@ services:
       - UMASK_SET=022
     volumes:
       - /media/radarr/config:/config
-      - /media/plex/Tv:/tv
+      - /media/plex/Movies:/movies
       - /media/plex:/downloads
     ports:
       - 7878:7878
