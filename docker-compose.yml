@@ -10,9 +10,9 @@ services:
       - VERSION=docker
       - UMASK_SET=022
     volumes:
-      - /media/plex/config:/config
-      - /media/plex/Tv:/Tv
-      - /media/plex/Movies:/Movies
+      - /array/media/plex/config:/config
+      - /array/media/plex/Tv:/Tv
+      - /array/media/plex/Movies:/Movies
     restart: unless-stopped
   deluge-vpn:
     image: sgtsquiggs/deluge-openvpn
@@ -20,8 +20,8 @@ services:
     env_file:
       - .vpn
     volumes:
-      - /media/deluge/config:/config
-      - /media/plex:/downloads
+      - /array/media/deluge/config:/config
+      - /array/media/plex:/downloads
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "8112:8112"
@@ -31,7 +31,7 @@ services:
       - UMASK_SET=022
       - TZ=Pacific/Auckland
       - OPENVPN_PROVIDER=NORDVPN
-      - OPENVPN_CONFIG=nz33.nordvpn.com.tcp
+      - OPENVPN_CONFIG=nz69.nordvpn.com.tcp
       - LOCAL_NETWORK=192.168.0.0/16
       - DELUGE_LOGLEVEL=error
     devices:
@@ -47,8 +47,8 @@ services:
       - PGID=1000
       - TZ=Pacific/Auckland
     volumes:
-      - /media/jackett/config:/config
-      - /media/plex:/downloads
+      - /array/media/jackett/config:/config
+      - /array/media/plex:/downloads
     ports: 
       - "9117:9117"
     restart: unless-stopped
@@ -61,9 +61,9 @@ services:
       - TZ=Pacific/Auckland
       - UMASK_SET=022
     volumes:
-      - /media/sonarr/config:/config
-      - /media/plex/Tv:/tv
-      - /media/plex:/downloads
+      - /array/media/sonarr/config:/config
+      - /array/media/plex/Tv:/tv
+      - /array/media/plex:/downloads
     ports:
       - "8989:8989"
     restart: unless-stopped
@@ -76,9 +76,9 @@ services:
       - TZ=Pacific/Auckland
       - UMASK_SET=022
     volumes:
-      - /media/radarr/config:/config
-      - /media/plex/Movies:/movies
-      - /media/plex:/downloads
+      - /array/media/radarr/config:/config
+      - /array/media/plex/Movies:/movies
+      - /array/media/plex:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -90,7 +90,7 @@ services:
       - PGID=1000
       - TZ=Pacific/Auckland
     volumes:
-      - /media/ombi/config:/config
+      - /array/media/ombi/config:/config
     ports:
       - 3579:3579
     restart: unless-stopped
