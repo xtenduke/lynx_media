@@ -31,7 +31,7 @@ services:
       - UMASK_SET=022
       - TZ=Pacific/Auckland
       - OPENVPN_PROVIDER=NORDVPN
-      - OPENVPN_CONFIG=nz69.nordvpn.com.tcp
+      - OPENVPN_CONFIG=nz32.nordvpn.com.tcp
       - LOCAL_NETWORK=192.168.0.0/16
       - DELUGE_LOGLEVEL=error
     devices:
